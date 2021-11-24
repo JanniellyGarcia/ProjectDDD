@@ -16,13 +16,15 @@ namespace Data.Context
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Client> Clientes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>(new UserMap().Configure);
+            modelBuilder.Entity<User>(new UserMap().Configure); // Mapeamento de User
+            modelBuilder.Entity<Client>(new ClientMap().Configure); // Mapeamento de Client
 
 
         }

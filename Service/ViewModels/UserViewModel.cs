@@ -9,11 +9,21 @@ namespace Service.ViewModels
 {
     public class UserViewModel
     {
-        [JsonPropertyName("Name")]
-        public string Name { get; set; }
+        [JsonPropertyName("Cpf")]
+        public string CPF { get; set; }
 
-        [JsonPropertyName("Email")]
-        public string Email { get; set; }
+        [JsonPropertyName("Endereço")]
+        public string Andress { get; set; }
+
+        [JsonPropertyName("Cep")]
+        public string CEP { get; set; }
+
+        [JsonPropertyName("Id Usuário")]
+        public int UserId { get; set; }
+        [JsonPropertyName("Usuário")]
+        public UserViewModel user { get; set; }
+
+
 
     }
 }
