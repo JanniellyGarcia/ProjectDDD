@@ -12,10 +12,10 @@ namespace Data.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {
-        protected readonly ProjectContext _sqlContext;
+        protected readonly SqlContext _sqlContext;
         protected readonly DbSet<TEntity> CurrentSet;
 
-        public BaseRepository(ProjectContext sqlContext)
+        public BaseRepository(SqlContext sqlContext)
         {
             _sqlContext = sqlContext;
             CurrentSet = sqlContext.Set<TEntity>();

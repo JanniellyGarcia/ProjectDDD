@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Context
 {
-    class ProjectContext : DbContext
+    public class SqlContext : DbContext
     {
-        public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
+        public SqlContext(DbContextOptions<SqlContext> options) : base(options)
         {
 
         }

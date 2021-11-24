@@ -1,5 +1,6 @@
 using CrossCutting.InjectionConfigure;
 using Data.
+using Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,7 +30,7 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
+            services.AddDbContext<SqlContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConexaoDB")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
