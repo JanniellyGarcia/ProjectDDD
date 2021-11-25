@@ -53,6 +53,37 @@ namespace Data.Migrations
                     b.ToTable("Clientes");
                 });
 
+            modelBuilder.Entity("Domain.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Create")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Nome");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double")
+                        .HasColumnName("Preco");
+
+                    b.Property<DateTime>("Update")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("double")
+                        .HasColumnName("Peso");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("Domain.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -63,7 +94,7 @@ namespace Data.Migrations
                     b.Property<DateTime>("Create")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 11, 24, 19, 14, 20, 655, DateTimeKind.Local).AddTicks(1705))
+                        .HasDefaultValue(new DateTime(2021, 11, 25, 18, 14, 46, 656, DateTimeKind.Local).AddTicks(9555))
                         .HasColumnName("Create");
 
                     b.Property<string>("Email")
@@ -84,6 +115,37 @@ namespace Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Domain.Models.Venda", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Create")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PoductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Update")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("Vendas");
+                });
+
             modelBuilder.Entity("Domain.Models.Client", b =>
                 {
                     b.HasOne("Domain.Models.User", "User")
@@ -93,6 +155,23 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Models.Venda", b =>
+                {
+                    b.HasOne("Domain.Models.Client", "client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("productId");
+
+                    b.Navigation("client");
+
+                    b.Navigation("product");
                 });
 #pragma warning restore 612, 618
         }

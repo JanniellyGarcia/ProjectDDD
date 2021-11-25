@@ -17,6 +17,8 @@ namespace Data.Context
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Client> Clientes { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,6 +27,8 @@ namespace Data.Context
 
             modelBuilder.Entity<User>(new UserMap().Configure); // Mapeamento de User
             modelBuilder.Entity<Client>(new ClientMap().Configure); // Mapeamento de Client
+            modelBuilder.Entity<Product>(new ProductMap().Configure); // Mapeamento de Product
+            modelBuilder.Entity<Venda>(new VendaMap().Configure); // Mapeamento de Product
 
 
         }
