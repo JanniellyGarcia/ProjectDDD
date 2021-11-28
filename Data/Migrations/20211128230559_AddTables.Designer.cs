@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20211125211447_addVendaAndProduct")]
-    partial class addVendaAndProduct
+    [Migration("20211128230559_AddTables")]
+    partial class AddTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,14 +71,14 @@ namespace Data.Migrations
                         .HasColumnName("Nome");
 
                     b.Property<double>("Price")
-                        .HasColumnType("double")
+                        .HasColumnType("float")
                         .HasColumnName("Preco");
 
                     b.Property<DateTime>("Update")
                         .HasColumnType("datetime2");
 
                     b.Property<double>("Weight")
-                        .HasColumnType("double")
+                        .HasColumnType("float")
                         .HasColumnName("Peso");
 
                     b.HasKey("Id");
@@ -96,7 +96,7 @@ namespace Data.Migrations
                     b.Property<DateTime>("Create")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 11, 25, 18, 14, 46, 656, DateTimeKind.Local).AddTicks(9555))
+                        .HasDefaultValue(new DateTime(2021, 11, 28, 20, 5, 59, 425, DateTimeKind.Local).AddTicks(5519))
                         .HasColumnName("Create");
 
                     b.Property<string>("Email")

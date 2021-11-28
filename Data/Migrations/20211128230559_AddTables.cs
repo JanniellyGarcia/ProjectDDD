@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class addVendaAndProduct : Migration
+    public partial class AddTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,8 @@ namespace Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Preco = table.Column<double>(type: "double", nullable: false),
-                    Peso = table.Column<double>(type: "double", nullable: false),
+                    Preco = table.Column<double>(type: "float", nullable: false),
+                    Peso = table.Column<double>(type: "float", nullable: false),
                     Create = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -32,7 +32,7 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(100)", nullable: false),
                     Email = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Create = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2021, 11, 25, 18, 14, 46, 656, DateTimeKind.Local).AddTicks(9555)),
+                    Create = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2021, 11, 28, 20, 5, 59, 425, DateTimeKind.Local).AddTicks(5519)),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

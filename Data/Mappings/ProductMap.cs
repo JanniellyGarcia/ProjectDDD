@@ -26,12 +26,12 @@ namespace Data.Mappings
             builder.Property(y => y.Price)
                    .IsRequired()
                    .HasColumnName("Preco")
-                   .HasColumnType("double");
+                   .HasColumnType("float");
 
             builder.Property(z => z.Weight)
                    .IsRequired()
                    .HasColumnName("Peso")
-                   .HasColumnType("double");
+                   .HasColumnType("float");
         }
     }
 }
